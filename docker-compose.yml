@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  dkim:
+    image: bloodhunterd/froxlor-mail-dkim
+    restart: unless-stopped
+    volumes:
+      - ./keys/:/etc/dkimkeys/:ro
