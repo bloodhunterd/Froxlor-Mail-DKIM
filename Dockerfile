@@ -8,6 +8,8 @@ RUN apt-get update && \
 
 # Install dependencies
 RUN apt-get install -y --no-install-recommends \
+    logrotate \
+    syslog-ng \
     unattended-upgrades
 
 # Install OpenDKIM
