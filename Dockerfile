@@ -15,7 +15,8 @@ RUN apt-get install -y --no-install-recommends \
 # Install OpenDKIM
 RUN apt-get install -y --no-install-recommends \
     opendkim \
-    opendkim-tools
+    opendkim-tools \
+    openssl
 
 COPY ./start.sh /start.sh
 
