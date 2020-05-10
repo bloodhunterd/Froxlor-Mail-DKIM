@@ -8,15 +8,16 @@ RUN apt-get update && \
 
 # Install dependencies
 RUN apt-get install -y --no-install-recommends \
+    ca-certificates \
     logrotate \
+    openssl \
     syslog-ng \
     unattended-upgrades
 
 # Install OpenDKIM
 RUN apt-get install -y --no-install-recommends \
     opendkim \
-    opendkim-tools \
-    openssl
+    opendkim-tools
 
 COPY ./start.sh /start.sh
 
