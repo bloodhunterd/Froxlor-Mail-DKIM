@@ -19,6 +19,9 @@ RUN apt-get install -y --no-install-recommends \
     opendkim \
     opendkim-tools
 
+# Add OpenDKIM configuration
+COPY ./etc/ /etc
+
 COPY ./start.sh /start.sh
 
 ENTRYPOINT ["bash", "/start.sh"]
