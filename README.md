@@ -10,6 +10,12 @@ Docker Image of OpenDKIM for Froxlor Mail Server.
 
 See example [Docker Compose file](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/docker-compose.yml).
 
+To generate a key simply run the key generator in the container.
+
+```bash
+opendkim-genkey -r -s mail -b 2048 -d example.com -D /etc/dkimkeys
+```
+
 ### Volumes
 
 Mount the key directory and put the keys into it.
@@ -31,6 +37,7 @@ docker-compose up -d
 ## Build With
 
 * [OpenDKIM](http://opendkim.org/)
+* [OpenSSL](https://www.openssl.org/)
 * [Debian](https://www.debian.org/)
 * [Docker](https://www.docker.com/)
 
