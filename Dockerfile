@@ -1,27 +1,40 @@
 FROM debian:stable-slim
 
+# ===================================================
+# Ports
+# ===================================================
+
 EXPOSE 8891
 
-# Update sources and preinstalled packages
+# ===================================================
+# Base packages
+# ===================================================
+
 RUN apt-get update && \
     apt-get upgrade -y --no-install-recommends
 
-# Install dependencies
 RUN apt-get install -y --no-install-recommends \
     ca-certificates \
-    logrotate \
-    openssl \
     syslog-ng \
     unattended-upgrades
 
-# Install OpenDKIM
+# ===================================================
+# OpenDKIM
+# ===================================================
+
 RUN apt-get install -y --no-install-recommends \
     opendkim \
-    opendkim-tools
+    opendkim-tools \
+    openssl
 
-# Add OpenDKIM configuration
-COPY ./etc/ /etc
+# ===================================================
+# Filesystem
+# ===================================================
 
-COPY ./start.sh /start.sh
+COPY ./src/ /
+
+# ===================================================
+# Entrypoint
+# ===================================================
 
 ENTRYPOINT ["bash", "/start.sh"]
