@@ -1,29 +1,54 @@
-[![Release](https://img.shields.io/github/v/release/bloodhunterd/froxlor-mail-dkim-docker?include_prereleases&style=for-the-badge)](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/releases)
-[![Docker Build](https://img.shields.io/docker/cloud/build/bloodhunterd/froxlor-mail-dkim?style=for-the-badge)](https://hub.docker.com/r/bloodhunterd/froxlor-mail-dkim)
+[![Release](https://img.shields.io/github/v/release/bloodhunterd/froxlor-mail-dkim-docker?style=for-the-badge)](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/releases)
+[![Docker Build](https://img.shields.io/github/workflow/status/bloodhunterd/froxlor-mail-dkim-docker/Docker?style=for-the-badge&label=Docker%20Build)](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/actions?query=workflow%3ADocker)
+[![Docker Pulls](https://img.shields.io/docker/pulls/bloodhunterd/froxlor-mail-dkim?style=for-the-badge)](https://hub.docker.com/r/bloodhunterd/froxlor-mail-dkim)
 [![License](https://img.shields.io/github/license/bloodhunterd/froxlor-mail-dkim-docker?style=for-the-badge)](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/LICENSE)
 
-# DKIM for Froxlor Mail
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/bloodhunterd)
 
-Docker Image of OpenDKIM for Froxlor Mail Server.
+# Froxlor Mail DKIM Docker
 
-## Configuration
+Docker image of OpenDKIM for Froxlor Server Management Panel.
 
-See example [Docker Compose file](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/docker-compose.yml).
+This image is meant to be used with the [Froxlor Mail Docker](https://github.com/bloodhunterd/froxlor-mail-docker) image.
 
-To generate a key simply run the key generator in the container.
+## Deployment
+
+### Docker Compose
+
+```dockerfile
+version: '2.4'
+
+services:
+  dkim:
+    image: bloodhunterd/froxlor-mail-dkim
+    ports:
+      - '8891:8891'
+    volumes:
+      - ./keys/:/etc/dkimkeys/:ro
+```
+
+### Configuration
+
+To generate a key for your domain simply use the key generator.
 
 ```bash
 opendkim-genkey -r -s mail -b 2048 -d example.com -D /etc/dkimkeys
 ```
 
+### Ports
+
+| Port | Description
+| ---: | -----------
+| 8891 | OpenDKIM
+
 ### Volumes
 
-Mount the key directory and put the keys into it.
+| Volume | Path | Read only | Description
+| ------ | ---- | :-------: | -----------
+| Keys | /etc/dkimkeys/ | &#10004; | OpenDKIM key store.
 
-```bash
-volumes:
-  - ./keys/:/etc/dkimkeys/:ro
-```
+| &#10004; Yes | &#10008; No
+| ------------ | -----------
 
 ## Update
 
@@ -47,4 +72,4 @@ docker-compose up -d
 
 ## License
 
-This project is licensed under the Unlicense - see [LICENSE.md](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/LICENSE) file for details.
+This project is licensed under the MIT - see [LICENSE.md](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/LICENSE) file for details.
