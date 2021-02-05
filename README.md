@@ -1,11 +1,11 @@
-[![Release](https://img.shields.io/github/v/release/bloodhunterd/froxlor-mail-dkim-docker?style=for-the-badge)](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/releases)
-[![Docker Build](https://img.shields.io/github/workflow/status/bloodhunterd/froxlor-mail-dkim-docker/Docker?style=for-the-badge&label=Docker%20Build)](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/actions?query=workflow%3ADocker)
+[![Release](https://img.shields.io/github/v/release/bloodhunterd/froxlor-mail-dkim?style=for-the-badge)](https://github.com/bloodhunterd/froxlor-mail-dkim/releases)
+[![Docker Build](https://img.shields.io/github/workflow/status/bloodhunterd/froxlor-mail-dkim/Docker?style=for-the-badge&label=Docker%20Build)](https://github.com/bloodhunterd/froxlor-mail-dkim/actions?query=workflow%3ADocker)
 [![Docker Pulls](https://img.shields.io/docker/pulls/bloodhunterd/froxlor-mail-dkim?style=for-the-badge)](https://hub.docker.com/r/bloodhunterd/froxlor-mail-dkim)
-[![License](https://img.shields.io/github/license/bloodhunterd/froxlor-mail-dkim-docker?style=for-the-badge)](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/bloodhunterd/froxlor-mail-dkim?style=for-the-badge)](https://github.com/bloodhunterd/froxlor-mail-dkim/blob/master/LICENSE)
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/bloodhunterd)
 
-# Froxlor Mail DKIM Docker
+# Froxlor Mail DKIM
 
 Docker image of OpenDKIM for Froxlor Server Management Panel.
 
@@ -52,7 +52,7 @@ opendkim-genkey -r -s mail -b 2048 -d example.com -D /etc/dkimkeys
 
 ## Update
 
-Please note the [changelog](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/CHANGELOG.md) to check for configuration changes before updating.
+Please note the [changelog](https://github.com/bloodhunterd/froxlor-mail-dkim/blob/master/CHANGELOG.md) to check for configuration changes before updating.
 
 ```bash
 docker-compose pull
@@ -72,4 +72,4 @@ docker-compose up -d
 
 ## License
 
-This project is licensed under the MIT - see [LICENSE.md](https://github.com/bloodhunterd/froxlor-mail-dkim-docker/blob/master/LICENSE) file for details.
+This project is licensed under the MIT - see [LICENSE.md](https://github.com/bloodhunterd/froxlor-mail-dkim/blob/master/LICENSE) file for details.
