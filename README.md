@@ -29,10 +29,30 @@ services:
 
 ### Configuration
 
-To generate a key for your domain simply use the key generator.
+The `keys` folder must contain the following three files.
+
+* keytable
+* signingtable
+* trustedhosts
+
+The `keytable` file is a lookup table to match DNS records with the correct selector and key file.
+
+~~~
+mail._domainkey.example.com example.com:mail:/etc/dkimkeys/example.com/mail.private
+~~~
+
+The `signingtable` file contains which email domain matches which DNS record.
+
+~~~
+*@domain.tld mail._domainkey.example.com
+~~~
+
+The `trustedhosts` file contains a list of all host IP addresses which do not need a DKIM signature.
+
+To generate a key for your domain with the selector `mail` run this command.
 
 ```bash
-opendkim-genkey -r -s mail -b 2048 -d example.com -D /etc/dkimkeys
+opendkim-genkey -s mail -b 2048 -d example.com -D /etc/dkimkeys/
 ```
 
 ### Ports
@@ -46,9 +66,6 @@ opendkim-genkey -r -s mail -b 2048 -d example.com -D /etc/dkimkeys
 | Volume | Path | Read only | Description
 | ------ | ---- | :-------: | -----------
 | Keys | /etc/dkimkeys/ | &#10004; | OpenDKIM key store.
-
-| &#10004; Yes | &#10008; No
-| ------------ | -----------
 
 ## Update
 
