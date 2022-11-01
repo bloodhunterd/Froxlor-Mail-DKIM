@@ -16,13 +16,13 @@ This image is meant to be used with the [Froxlor Mail](https://github.com/bloodh
 ### Docker Compose
 
 ```dockerfile
-version: '2.4'
+version: "2.4"
 
 services:
   dkim:
     image: bloodhunterd/froxlor-mail-dkim
     ports:
-      - '8891:8891'
+      - "8891:8891"
     volumes:
       - ./keys/:/etc/dkimkeys/:ro
 ```
@@ -57,15 +57,15 @@ opendkim-genkey -s mail -b 2048 -d example.com -D /etc/dkimkeys/
 
 ### Ports
 
-| Port | Description
-| ---: | -----------
-| 8891 | OpenDKIM
+| Port | Description |
+|-----:|-------------|
+| 8891 | OpenDKIM    |
 
 ### Volumes
 
-| Volume | Path | Read only | Description
-| ------ | ---- | :-------: | -----------
-| Keys | /etc/dkimkeys/ | &#10004; | OpenDKIM key store.
+| Volume | Path           | Read only | Description         |
+|--------|----------------|:---------:|---------------------|
+| Keys   | /etc/dkimkeys/ | &#10004;  | OpenDKIM key store. |
 
 ## Update
 

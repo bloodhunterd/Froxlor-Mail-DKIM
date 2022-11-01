@@ -37,4 +37,4 @@ COPY ./src/ /
 # Entrypoint
 # ===================================================
 
-ENTRYPOINT ["bash", "/start.sh"]
+ENTRYPOINT ["opendkim", "-f"]
